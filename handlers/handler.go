@@ -18,7 +18,10 @@ func Handling() {
 	//detected that POST arrives with /register, middleware takes action
 	router.HandleFunc("/register", middlew.CheckDB(routers.Register)).Methods("Post")
 	router.HandleFunc("/login", middlew.CheckDB(routers.Login)).Methods("Post")
-	router.HandleFunc("/viewprofile", middlew.CheckDB(middlew.JWTValidate( routers.ViewProfile))).Methods("Get")
+	router.HandleFunc("/viewprofile", middlew.CheckDB(middlew.JWTValidate(routers.ViewProfile))).Methods("Get")
+	router.HandleFunc("/modifyProfile", middlew.CheckDB(middlew.JWTValidate(routers.ModifyUserProfile))).Methods("PUT")
+	router.HandleFunc("/tweet", middlew.CheckDB(middlew.JWTValidate(routers.RecordTweet))).Methods("POST")
+	router.HandleFunc("/readTweet", middlew.CheckDB(middlew.JWTValidate(routers.ReadTweets))).Methods("GET")
 
 	//open the port, see if in the OS the PORT is already created
 	PORT := os.Getenv("PORT")

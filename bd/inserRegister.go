@@ -2,14 +2,14 @@ package bd
 
 import (
 	"context"
-	"time"
 	"github.com/fyonfa/mySocialSpace/models"
 	"go.mongodb.org/mongo-driver/bson/primitive"
+	"time"
 )
 //InsertRegister it is the final stop with the DB to insert the dat from the user
 func InsertRegister(u models.User) (string, bool, error){
 	//create a context
-	ctx, cancel := context.WithTimeout(context.Background(),20*time.Second)//dont want to be longer than 15s
+	ctx, cancel := context.WithTimeout(context.Background(),15*time.Second)//dont want to be longer than 15s
 	defer cancel()//it cancels the timeout given from cancel above
 
 	db := MongoCN.Database("mySocial")

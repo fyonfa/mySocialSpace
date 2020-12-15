@@ -10,7 +10,7 @@ import (
 
 //MongoCN, Mongo Connection is the object of connection of the BD, all the operations with BD will be use MongoCN
 var MongoCN = ConnectBD()                                                                                                                             //external use, Caps, it ist going to connect to the DB and it will return the conection itself
-var clientOptions = options.Client().ApplyURI("mongodb+srv://"+user+":"+pass+"@mysocial.shakx.mongodb.net/"+dataBase+"?retryWrites=true&w=majority\n") //we can set the URL of the DB with this
+var clientOptions = options.Client().ApplyURI("mongodb+srv://"+user+":"+pass+"@mysocial.shakx.mongodb.net/"+dataBase+"?retryWrites=true&w=majority") //we can set the URL of the DB with this
 
 //ConnectBD is the function that allows to connect in to the DB
 func ConnectBD() *mongo.Client {
