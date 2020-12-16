@@ -22,6 +22,12 @@ func Handling() {
 	router.HandleFunc("/modifyProfile", middlew.CheckDB(middlew.JWTValidate(routers.ModifyUserProfile))).Methods("PUT")
 	router.HandleFunc("/tweet", middlew.CheckDB(middlew.JWTValidate(routers.RecordTweet))).Methods("POST")
 	router.HandleFunc("/readTweet", middlew.CheckDB(middlew.JWTValidate(routers.ReadTweets))).Methods("GET")
+	router.HandleFunc("/removeTweet", middlew.CheckDB(middlew.JWTValidate(routers.RemoveTweet))).Methods("DELETE")
+
+	router.HandleFunc("/uploadAvatar", middlew.CheckDB(middlew.JWTValidate(routers.UploadAvatar))).Methods("POST")
+	router.HandleFunc("/getAvatar", middlew.CheckDB(routers.GetAvatar)).Methods("GET") //we dont need token validation for this one
+	router.HandleFunc("/uploadBanner", middlew.CheckDB(middlew.JWTValidate(routers.UploadBanner))).Methods("POST")
+	router.HandleFunc("/getBanner", middlew.CheckDB(routers.GetBanner)).Methods("GET") //we dont need token validation for this one
 
 	//open the port, see if in the OS the PORT is already created
 	PORT := os.Getenv("PORT")
