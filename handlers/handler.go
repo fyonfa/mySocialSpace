@@ -33,6 +33,8 @@ func Handling() {
 	router.HandleFunc("/unsetRelation", middlew.CheckDB(middlew.JWTValidate(routers.RemoveRelation))).Methods("DELETE")
 	router.HandleFunc("/queryRelation", middlew.CheckDB(middlew.JWTValidate(routers.QueryRelation))).Methods("GET")
 
+	router.HandleFunc("/userList", middlew.CheckDB(middlew.JWTValidate(routers.UserList))).Methods("GET")
+
 	//open the port, see if in the OS the PORT is already created
 	PORT := os.Getenv("PORT")
 	if PORT == "" { //if port is nothing I will create it
