@@ -29,6 +29,10 @@ func Handling() {
 	router.HandleFunc("/uploadBanner", middlew.CheckDB(middlew.JWTValidate(routers.UploadBanner))).Methods("POST")
 	router.HandleFunc("/getBanner", middlew.CheckDB(routers.GetBanner)).Methods("GET") //we dont need token validation for this one
 
+	router.HandleFunc("/setRelation", middlew.CheckDB(middlew.JWTValidate(routers.HighRelation))).Methods("POST")
+	router.HandleFunc("/unsetRelation", middlew.CheckDB(middlew.JWTValidate(routers.RemoveRelation))).Methods("DELETE")
+	router.HandleFunc("/queryRelation", middlew.CheckDB(middlew.JWTValidate(routers.QueryRelation))).Methods("GET")
+
 	//open the port, see if in the OS the PORT is already created
 	PORT := os.Getenv("PORT")
 	if PORT == "" { //if port is nothing I will create it
