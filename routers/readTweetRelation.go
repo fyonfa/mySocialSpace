@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"strconv"
 )
-ReadTweetFollowers read the tweets of all our followers
+//ReadTweetFollowers read the tweets of all our followers
 func ReadTweetFollowers(w http.ResponseWriter, r *http.Request) {
 
 	if len(r.URL.Query().Get("page")) < 1 {
