@@ -34,7 +34,7 @@ func Handling() {
 	router.HandleFunc("/queryRelation", middlew.CheckDB(middlew.JWTValidate(routers.QueryRelation))).Methods("GET")
 
 	router.HandleFunc("/userList", middlew.CheckDB(middlew.JWTValidate(routers.UserList))).Methods("GET")
-	router.HandleFunc("/readTweetFollowers", middlew.CheckDB(middlew.JWTValidate(routers.ReadTweetFollowers))).Methods("GET")
+	router.HandleFunc("/readTweetFollowers", middlew.CheckDB(middlew.JWTValidate(routers.ReadTweetRelation))).Methods("GET")
 
 	//open the port, see if in the OS the PORT is already created
 	PORT := os.Getenv("PORT")

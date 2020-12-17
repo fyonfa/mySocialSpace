@@ -16,13 +16,14 @@ func ReadTweetFollowers(ID string, page int) ([]models.ReturnTweetFollowers, boo
 	col := db.Collection("relation")
 
 	skip := (page - 1) * 20         //20 result only
+
 	conditions := make([]bson.M, 0) //for agregate framework MongoDB
 	conditions = append(conditions, bson.M{"$match": bson.M{"userid": ID}})
 	//join two tables with mongo
 	conditions = append(conditions, bson.M{
 		"$lookup": bson.M{
 			"from":         "tweet",
-			"localfield":   "userrelationid",
+			"localField":   "userrelationid",
 			"foreignField": "userid",
 			"as":           "tweet",
 		}})
