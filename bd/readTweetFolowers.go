@@ -29,7 +29,7 @@ func ReadTweetFollowers(ID string, page int) ([]models.ReturnTweetFollowers, boo
 		}})
 	conditions = append(conditions, bson.M{"$unwind": "$tweet"})               //unwind:all documents come the same
 	conditions = append(conditions, bson.M{"$sort": bson.M{"tweet.date": -1}}) //sort
-	conditions = append(conditions, bson.M{"skip": skip})                      //first skip and then limit, if not works bad
+	conditions = append(conditions, bson.M{"$skip": skip})                      //first skip and then limit, if not works bad
 	conditions = append(conditions, bson.M{"$limit": 20})
 	//framework agregate
 	cursor, err := col.Aggregate(ctx, conditions)
@@ -40,3 +40,5 @@ func ReadTweetFollowers(ID string, page int) ([]models.ReturnTweetFollowers, boo
 	}
 	return result, true
 }
+
+
